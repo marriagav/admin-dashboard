@@ -33,10 +33,11 @@ body {
 }
 
 main {
-  /* height: 100%;
-  width: 100%; */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: minmax(200px, 260px) repeat(
+      auto-fit,
+      minmax(260px, 1fr)
+    );
   grid-template-rows: 170px repeat(auto-fit, minmax(800px, 1fr));
 }
 
@@ -65,7 +66,6 @@ div.header > * {
 
 div.navbar {
   grid-column: 1;
-  /* grid-row: 1/-1; */
   background-color: var(--blue);
   color: white;
   position: sticky;
@@ -78,9 +78,11 @@ div.content {
   grid-column: 2/-1;
   grid-row: 2/-1;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: minmax(400px, 3fr) 1fr;
+  grid-template-rows: repeat(auto-fit, minmax(120px, 1fr));
   padding: 2%;
+  column-gap: 5%;
+  row-gap: 5%;
 }
 
 .search {
@@ -183,23 +185,101 @@ svg {
 }
 
 .large-section {
+  grid-column: 1;
+  grid-row: 1/-1;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.small-section {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#announcement-section {
+  grid-row: 1;
+}
+
+#trending-section {
+  grid-row: 3;
 }
 
 .section-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
-  height: 100%;
   gap: 3%;
 }
 
-.large-card {
+.large-card,
+.small-card {
   display: flex;
   flex-direction: column;
   background-color: white;
   padding: 10%;
   border-radius: 10px;
+}
+
+.large-card {
+  border-left: 7px solid orange;
+}
+
+.lc-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  padding-top: 10%;
+  gap: 2em;
+}
+
+.small-card-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.lc-button {
+  background-color: white;
+  border: none;
+}
+
+.announcement > h3 {
+  font-size: small;
+}
+
+.announcement > p {
+  font-size: small;
+}
+
+hr {
+  border: 0.1px solid rgba(128, 128, 128, 0.367);
+}
+
+.trending {
+  display: grid;
+  grid-template-columns: 50px repeat(auto-fit, minmax(30px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(3px, 1fr));
+  align-items: center;
+  justify-content: center;
+}
+
+.trending > img {
+  grid-column: 1;
+  grid-row: 1/3;
+}
+
+.trending > h4 {
+  font-size: small;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.trending > p {
+  font-size: small;
+  grid-column: 2;
+  grid-row: 2;
 }
